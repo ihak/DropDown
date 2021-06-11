@@ -580,7 +580,7 @@ extension DropDown {
 		widthConstraint.constant = layout.width
 		heightConstraint.constant = layout.visibleHeight
 
-		tableView.isScrollEnabled = layout.offscreenHeight > 0
+        tableView.isScrollEnabled = true
 
 		DispatchQueue.main.async { [weak self] in
 			self?.tableView.flashScrollIndicators()
@@ -749,8 +749,8 @@ extension DropDown {
 		let x = anchorViewX + topOffset.x
 		var y = (anchorViewMaxY + topOffset.y) - tableHeight
 
-		let windowY = window.bounds.minY + DPDConstant.UI.HeightPadding
-
+        let windowY = window.bounds.minY + DPDConstant.UI.HeightPadding - offsetFromWindowBottom
+        
 		if y < windowY {
 			offscreenHeight = abs(y - windowY)
 			y = windowY
